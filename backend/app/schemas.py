@@ -59,3 +59,15 @@ class ComparisonProductCreate(BaseModel):
     comparison_id : int 
     product_id : int
     
+class PriorityWeights(BaseModel):
+    price : int
+    rating : int
+    ram : int
+    storage: int 
+    battery : int
+    weight : int
+    
+class DecisionResult(BaseModel):
+    winner: ProductiveResponse
+    scores: dict[str, float]
+    reasons: list[str]
