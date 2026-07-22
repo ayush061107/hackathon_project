@@ -1,34 +1,52 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { FaMoon, FaSun } from "react-icons/fa";
+import { useTheme } from "../context/ThemeContext";
+import "./Navbar.css";
 
-function Navbar() {
-    return (
-        <nav>
-            <h2>DecisionFlow</h2>
+export default function Navbar() {
+  const { darkMode, setDarkMode } = useTheme();
+  const location = useLocation();
 
-            <Link to="/">
-                <button>Dashboard</button>
-            </Link>
+  const active = (path) => (location.pathname === path ? "active" : "");
 
-            <Link to="/create-decision">
-                <button>Create Decision</button>
-            </Link>
+  return (
+    <nav className="navbar">
+      <div className="logo">
+        Decision<span>Flow</span>
+      </div>
 
-            <Link to="/compare-Products">
-                <button>Compare Products</button>    
-            </Link>
+      <div className="av-links">
+        <Link className={active("/")} to="/">
+          Dashboard
+        </Link>
 
-            <Link to="/history">
-                <button>History</button>
-            </Link>
+        <Link className={active("/create-decision")} to="/create-decision">
+          Create Decision
+        </Link>
 
-            <Link to="/login">
-                <button>Login</button>
-            </Link>
+        <Link className={active("/compare-products")} to="/compare-products">
+          Compare Products
+        </Link>
 
-            <Link to="/register">
-                <button>Register</button>
-            </Link>
-        </nav>
-    ) ;
+        <Link className={active("/history")} to="/history">
+          History
+        </Link>
+
+        <Link className={active("/login")} to="/login">
+          Login
+       </Link>
+
+        <Link className={active("/register")} to="/register">
+          Register
+        </Link>
+      </div>
+
+      <button
+        className="theme-btn"
+        onClick={() => setDarkMode(!darkMode)}
+      >
+        {darkMode ? <FaSun /> : <FaMoon />}
+      </button>
+    </nav>
+  );
 }
-export default Navbar;

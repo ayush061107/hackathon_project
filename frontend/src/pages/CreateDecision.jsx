@@ -1,48 +1,52 @@
-import "./CreateDecision.css";
 import { useState } from "react";
 
 function CreateDecision() {
-  const [decision, setDecision] = useState("");
+  const [title, setTitle] = useState("");
   const [options, setOptions] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    alert("Decision Created!");
-
-    console.log({
-      decision,
-      options: options.split(","),
-    });
-
-    setDecision("");
-    setOptions("");
+    alert(
+      `Decision Created!\n\nTitle: ${title}\nOptions: ${options}`
+    );
   };
 
   return (
-    <div className="decision-container">
+    <div style={{ padding: "30px" }}>
       <h1>Create Decision</h1>
 
       <form onSubmit={handleSubmit}>
-        <label>ecision Title</label>
-        <input
-          type="text"
-          placeholder="Example: Which phone should I buy?"
-          value={decision}
-          onChange={(e) => setDecision(e.target.value)}
-          required
-        />
+        <div>
+          <label>Decision Title</label>
+          <br />
+          <input
+           type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Which phone should I buy?"
+            style={{ width: "300px" }}
+          />
+        </div>
 
-        <label>Options (comma separated)</label>
-        <textarea
-          placeholder="iPhone 16, Samsung S26, OnePlus 14"
-          value={options}
-          onChange={(e) => setOptions(e.target.value)}
-          required
-        />
+        <br />
+
+        <div>
+          <label>Options (comma separated)</label>
+          <br />
+          <textarea
+            value={options}
+            onChange={(e) => setOptions(e.target.value)}
+            placeholder="iPhone 16, Samsung S26"
+            rows={4}
+            col={40}
+          />
+        </div>
+
+        <br />
 
         <button type="submit">
-         Create Decision
+          Create Decision
         </button>
       </form>
     </div>
