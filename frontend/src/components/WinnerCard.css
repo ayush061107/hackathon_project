@@ -1,0 +1,14 @@
+.winner-card{
+    width:400px;
+    margin:40px auto;
+    background:#dcfce7;
+    padding:20px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 4px 10px rgba(0,0,0,.15);
+}
+
+.winner-card h2{
+    color:#15803d;
+    margin-bottom:10px;
+}
