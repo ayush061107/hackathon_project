@@ -1,0 +1,19 @@
+.compare-page{
+    padding:40px;
+    background:#f4f7fb;
+    min-height:100vh;
+}
+
+.compare-title{
+    text-align:center;
+    color:#2563eb;
+    margin-bottom:30px;
+}
+
+.product-row{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+    margin-bottom:30px;
+}
