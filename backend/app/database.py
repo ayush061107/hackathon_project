@@ -1,7 +1,7 @@
-from sqlalchemy import create_engine 
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-database_URL="mysql+pymysql://root:12345678@localhost/decisionflow_db"
+database_URL = "mysql+pymysql://root:12345678@localhost/decisionflow_db"
 
 engine = create_engine(
     database_URL,
@@ -14,7 +14,7 @@ SessionLocal = sessionmaker(
     bind=engine
 )
 
-Base=declarative_base
+Base = declarative_base()   # <-- FIXED
 
 def get_db():
     db = SessionLocal()

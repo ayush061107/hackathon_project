@@ -6,7 +6,7 @@ from app import models, schemas, auth
 router = APIRouter(prefix="/products",tags=["Products"])
 
 @router.post("/", response_model=schemas.ProductResponse, status_code = status.HTTP_201_CREATED)
-def create_product(product : schemas.ProductCreate, current_user : models.User = Depends(auth.get_curren_user),db : Session = Depends(get_db)):
+def create_product(product : schemas.ProductCreate, current_user : models.User = Depends(auth.get_current_user),db : Session = Depends(get_db)):
     new_product = models.Product(
         name = product.name,
         brand= product.brand,
@@ -24,7 +24,7 @@ def create_product(product : schemas.ProductCreate, current_user : models.User =
     return new_product
 
 @router.get("/",
-        response_model=list[schemas.PRoductResponse])
+        response_model=list[schemas.ProductResponse])
 def get_products(
     current_user : models.User = Depends(auth.get_current_user),
     db : Session = Depends(get_db)

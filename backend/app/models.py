@@ -44,11 +44,25 @@ class Comparison(Base):
     
 class ComparisonProduct(Base):
     __tablename__ = "comparison_products"
-    
-    id = Column(Integer,primary_key=True, index=True)
-    comparison_id = Column(Integer, ForeignKey("comparison.id"))
-    product_id = Column(Integer, ForeignKey("product.id"))
-    
-    comparison = relationship("Comparison", back_populates="products")
-    product = relationship("product", back_populates="comparison_products")
-    
+
+    id = Column(Integer, primary_key=True, index=True)
+
+    comparison_id = Column(
+        Integer,
+        ForeignKey("comparisons.id")
+    )
+
+    product_id = Column(
+        Integer,
+        ForeignKey("products.id")
+    )
+
+    comparison = relationship(
+        "Comparison",
+        back_populates="products"
+    )
+
+    product = relationship(
+        "Product",
+        back_populates="comparison_products"
+    )
