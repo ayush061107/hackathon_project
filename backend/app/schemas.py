@@ -68,6 +68,7 @@ class PriorityWeights(BaseModel):
     weight : int
     
 class DecisionResult(BaseModel):
-    winner: ProductiveResponse
+    winner: ProductResponse
     scores: dict[str, float]
     reasons: list[str]
+    
