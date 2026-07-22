@@ -51,3 +51,4 @@ class ComparisonProduct(Base):
     
     comparison = relationship("Comparison", back_populates="products")
     product = relationship("product", back_populates="comparison_products")
+    
